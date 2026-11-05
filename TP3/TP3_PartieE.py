@@ -1,9 +1,3 @@
-"""Partie E : recherche par auteur, limite d'emprunts et export JSON.
-
-Lancer le menu : python TP3_PartieE.py
-Lancer les tests en bas du fichier : python TP3_PartieE.py --test
-"""
-
 import json
 import sys
 
@@ -12,7 +6,7 @@ from TP3_PartieC import BibliothequeCSV
 
 
 class BibliothequeEtendue(BibliothequeCSV):
-    """Ajouter les extensions sans modifier les classes des parties A/B/C."""
+    #Ajouter les extensions sans modifier les classes des parties A/B/C.
 
     def __init__(self, limite_emprunts=3):
         super().__init__()
@@ -22,7 +16,7 @@ class BibliothequeEtendue(BibliothequeCSV):
         self.limite_emprunts = limite_emprunts
 
     def rechercher_par_auteur(self, auteur):
-        """Renvoyer les livres dont l'auteur contient la recherche, sans casse."""
+        # Renvoyer les livres dont l'auteur contient la recherche, sans casse.
         recherche = auteur.strip().casefold()
         if not recherche:
             return []
@@ -30,7 +24,7 @@ class BibliothequeEtendue(BibliothequeCSV):
                 if recherche in livre.auteur.casefold()]
 
     def emprunter(self, nom, titre):
-        """Refuser un nouvel emprunt si l'utilisateur a atteint sa limite."""
+        # Refuser un nouvel emprunt si l'utilisateur a atteint sa limite.
         utilisateur = self.utilisateurs.get(nom)
         if utilisateur is not None and len(utilisateur.emprunts) >= self.limite_emprunts:
             print(f"Limite atteinte : {self.limite_emprunts} emprunts maximum.")
@@ -39,11 +33,8 @@ class BibliothequeEtendue(BibliothequeCSV):
         return super().emprunter(nom, titre)
 
     def exporter_json(self, fichier_json="bibliotheque.json"):
-        """Exporter un instantané lisible, incluant les utilisateurs sans emprunt.
-
-        L'export JSON est indépendant du CSV : charger() continue de lire le CSV.
-        Une erreur d'écriture est transmise à l'appelant pour qu'il la signale.
-        """
+        #Exporter un instantané lisible, incluant les utilisateurs sans emprunt.
+        
         donnees = {
             "limite_emprunts": self.limite_emprunts,
             "livres": [
@@ -64,7 +55,7 @@ class BibliothequeEtendue(BibliothequeCSV):
 
 
 def main():
-    """Proposer le menu de la bibliothèque enrichi de deux nouveaux choix."""
+    # Proposer le menu de la bibliothèque enrichi de deux nouveaux choix.
     biblio = BibliothequeEtendue(limite_emprunts=3)
     try:
         biblio.charger()
@@ -131,9 +122,7 @@ def main():
             print("Choix invalide. Veuillez saisir un nombre de 1 à 8.")
 
 
-# ============================================================
-# TESTS AUTOMATISÉS DE LA PARTIE E — en bas du code
-# ============================================================
+# TESTS AUTOMATISÉS DE LA PARTIE E 
 import io
 import tempfile
 import unittest
