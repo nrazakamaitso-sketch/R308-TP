@@ -13,7 +13,6 @@ TP3/
     TP3_PartieB.py
     TP3_PartieC.py
     TP3_PartieD.py
-    test_TP3_PartieD.py
 ```
 
 Le TP2 n'est pas inclus : aucun fichier correspondant n'était présent dans
@@ -51,9 +50,10 @@ sont pas conservés après un redémarrage avec le format de la partie C.
 Depuis le dossier `TP3` :
 
 ```powershell
-python -m unittest -v test_TP3_PartieD
+python TP3_PartieD.py --test
 ```
 
+Les tests sont regroupés en bas de `TP3_PartieD.py`.
 Les neuf tests couvrent le menu, les années et choix invalides, la sauvegarde,
 le rechargement, le retour d'un livre après redémarrage et la limite de
 persistance des utilisateurs sans emprunt. Les sauvegardes de test utilisent
