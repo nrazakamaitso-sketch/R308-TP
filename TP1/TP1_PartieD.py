@@ -1,9 +1,3 @@
-"""TP1, partie D : jeu du pendu, avec sept erreurs maximum.
-
-Lancer le jeu : python TP1_PartieD.py
-Lancer les tests placés en bas du fichier : python TP1_PartieD.py --test
-"""
-
 import random
 import sys
 from pathlib import Path
@@ -25,7 +19,6 @@ def jouer(mot):
     mot = mot.strip().upper()
     if not mot or not mot.isalpha():
         raise ValueError("Le mot doit contenir uniquement des lettres.")
-
     # Comme dans la partie C, une liste représente les positions du masque.
     masque = ["_"] * len(mot)
     lettres_proposees = []
@@ -41,13 +34,11 @@ def jouer(mot):
     # Arrêter dès la septième erreur, conformément au jeu d'essai de l'énoncé.
     while "_" in masque and erreurs < maximum_erreurs:
         lettre = input("Propose une lettre : ").strip().upper()
-
         # Une saisie incorrecte ne consomme pas d'erreur.
         if len(lettre) != 1 or not lettre.isalpha():
             print("Saisie invalide : entre une seule lettre.")
             afficher_etat()
             continue
-
         # Une lettre répétée ne doit jamais être comptée deux fois.
         if lettre in lettres_proposees:
             print("Lettre déjà proposée : pas d'erreur de plus.")
@@ -62,13 +53,10 @@ def jouer(mot):
                     masque[position] = lettre
         else:
             erreurs += 1
-
         afficher_etat()
-
     if "_" not in masque:
         print("Gagné ! Le mot était", mot)
         return True
-
     print("Perdu, le mot était", mot)
     return False
 
@@ -82,7 +70,6 @@ def main():
     except OSError as erreur:
         print(f"Impossible de charger mots.txt : {erreur}")
         return
-
     if not mots:
         print("Aucun mot valide dans mots.txt.")
         return
@@ -92,9 +79,8 @@ def main():
     jouer(random.choice(mots))
 
 
-# ============================================================
-# TESTS DE LA PARTIE D — placés en bas du code
-# ============================================================
+
+# TESTS DE LA PARTIE D 
 import io
 import tempfile
 import unittest
