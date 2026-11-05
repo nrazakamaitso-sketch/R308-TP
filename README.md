@@ -8,6 +8,8 @@ TP1/
     TP1_PartieA.py
     TP1_PartieB.py
     TP1_PartieC.py
+    TP1_PartieD.py
+    mots.txt
 TP3/
     TP3_PartieA.py
     TP3_PartieB.py
@@ -29,10 +31,22 @@ python TP1_PartieA.py
 python TP1_PartieB.py
 ```
 
-La partie C du TP1 attend un fichier `mots.txt` dans le dossier courant,
-avec un mot par ligne. Ce fichier n'était pas présent dans les sources.
-Sans ce fichier, le programme actuel affiche un message puis échoue
-lors de la construction du masque. Le code d'origine est conservé.
+Le fichier `TP1/mots.txt` contient un mot par ligne et sert aux parties C et D.
+La partie C le cherche dans le dossier courant : l'exécuter depuis `TP1`.
+La partie D le retrouve à côté de son fichier Python.
+
+Pour jouer au pendu, depuis le dossier `TP1` :
+
+```powershell
+python TP1_PartieD.py
+python TP1_PartieD.py --test
+```
+
+Sept erreurs entraînent la défaite. Chaque bonne lettre révèle toutes ses
+positions. Une lettre déjà proposée ou une saisie invalide n'ajoute pas
+d'erreur. Le masque, les erreurs et les lettres proposées sont affichés
+à chaque tour. Les neuf tests automatisés sont placés en bas du code.
+Les bonus facultatifs (dessin ASCII, mode deux joueurs) ne sont pas inclus.
 
 Pour le menu de bibliothèque, depuis la racine du dépôt :
 
