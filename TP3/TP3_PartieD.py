@@ -1,9 +1,3 @@
-"""Menu du TP3 : exécuter ce fichier dans le dossier des parties A, B et C.
-
-La partie C conserve les livres et leurs emprunteurs dans livres.csv.
-Les utilisateurs sans emprunt ne sont donc pas conservés au redémarrage.
-"""
-
 from TP3_PartieA import Livre, Utilisateur
 from TP3_PartieC import BibliothequeCSV
 
@@ -16,7 +10,6 @@ def main():
     except FileNotFoundError:
         # Premier lancement : aucun fichier n'a encore été enregistré.
         print("Aucune sauvegarde : démarrage avec une bibliothèque vide.")
-
     print("Attention : les utilisateurs sans emprunt ne sont pas sauvegardés.")
 
     while True:
@@ -44,21 +37,17 @@ def main():
         elif choix == "2":
             nom = input("Nom de l'utilisateur : ").strip()
             biblio.ajouter_utilisateur(Utilisateur(nom))
-
         elif choix == "3":
             nom = input("Nom de l'utilisateur : ").strip()
             titre = input("Titre du livre : ").strip()
             # La bibliothèque retrouve elle-même les objets concernés.
             biblio.emprunter(nom, titre)
-
         elif choix == "4":
             nom = input("Nom de l'utilisateur : ").strip()
             titre = input("Titre du livre : ").strip()
             biblio.rendre(nom, titre)
-
         elif choix == "5":
             biblio.afficher_livres()
-
         elif choix == "6":
             try:
                 biblio.sauvegarder()
@@ -73,11 +62,8 @@ def main():
             print("Choix invalide. Veuillez saisir un nombre de 1 à 6.")
 
 
-# ============================================================
-# TESTS AUTOMATISÉS DE LA PARTIE D
-# Exécution : python TP3_PartieD.py --test
-# ============================================================
 
+# TESTS DE LA PARTIE D
 import importlib
 import importlib.util
 import io
@@ -92,7 +78,6 @@ from unittest.mock import Mock, call, patch
 
 
 DOSSIER = Path(__file__).resolve().parent
-
 
 def charger_menu_simule():
     """Importer le vrai fichier D en remplaçant seulement ses dépendances."""
@@ -230,7 +215,7 @@ class TestsIntegrationCSV(unittest.TestCase):
         emprunte = self.affichage(chargee)
         self.assertIn("1984", emprunte)
 
-        # Session 2 : rendre le livre sans recréer Ana vérifie sa restauration.
+        # Rendre le livre sans recréer Ana vérifie sa restauration.
         executer_menu(self.menu, ["4", "Ana", "1984", "6"])
         self.assertNotEqual(csv.read_bytes(), contenu_emprunte)
         rendue = self.menu.BibliothequeCSV()
