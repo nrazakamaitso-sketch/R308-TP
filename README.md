@@ -15,6 +15,7 @@ TP3/
     TP3_PartieB.py
     TP3_PartieC.py
     TP3_PartieD.py
+    TP3_PartieE.py
 ```
 
 Le TP2 n'est pas inclus : aucun fichier correspondant n'était présent dans
@@ -73,7 +74,33 @@ le rechargement, le retour d'un livre après redémarrage et la limite de
 persistance des utilisateurs sans emprunt. Les sauvegardes de test utilisent
 un dossier temporaire.
 
-## Historique
+## Partie E du TP3 : extensions facultatives
+
+Depuis `TP3`, lancer `python TP3_PartieE.py` pour ouvrir le menu enrichi.
+Les choix 1 à 6 restent ceux de la partie D ; 7 recherche les livres par
+auteur (recherche partielle, sans distinction majuscules/minuscules),
+8 exporte la bibliothèque vers `bibliotheque.json` dans le dossier courant.
+Le défi supplémentaire des statistiques est distinct de cette partie E.
+
+La classe `BibliothequeEtendue` hérite de `BibliothequeCSV`. Sa limite est
+de trois emprunts par utilisateur par défaut, car l'énoncé ne fixe pas de
+nombre. Elle peut être changée avec `BibliothequeEtendue(limite_emprunts=5)`.
+Dans le menu, modifier la valeur passée au constructeur dans `main()`.
+Rendre un livre libère une place ; les emprunts rechargés du CSV comptent
+également dans la limite. La limite est un réglage du programme, non du CSV.
+
+L'export JSON contient les livres, les utilisateurs (y compris sans emprunt)
+et la limite configurée. Il n'est pas rechargé automatiquement : le menu
+continue de charger et sauvegarder le CSV, avec sa limite de persistance
+des utilisateurs sans emprunt.
+
+Les onze tests sont en bas de `TP3_PartieE.py` :
+
+```powershell
+python TP3_PartieE.py --test
+```
+
+## Historique des commits
 
 Chaque partie est ajoutée dans un commit distinct, nommé par exemple
 `TP3 partie A`. Cet historique correspond à l'import des fichiers existants

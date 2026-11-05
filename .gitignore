@@ -5,3 +5,4 @@ __pycache__/
 # Fichiers créés pendant l'exécution des exercices
 etudiants.txt
 livres.csv
+bibliotheque.json
