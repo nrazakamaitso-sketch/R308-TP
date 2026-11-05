@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+.vscode/
+# Fichiers créés pendant l'exécution des exercices
+etudiants.txt
+livres.csv
