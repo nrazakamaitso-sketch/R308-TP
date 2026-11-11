@@ -12,6 +12,7 @@ TP1/
     mots.txt
 TP2/
     TP2_PartieA.py
+    TP2_PartieB.py
 TP3/
     TP3_PartieA.py
     TP3_PartieB.py
@@ -20,8 +21,8 @@ TP3/
     TP3_PartieE.py
 ```
 
-Le TP2 est ajouté progressivement : partie A (grille) disponible ;
-les parties B (joueurs) et C (jeu complet) seront ajoutées aux étapes suivantes.
+Le TP2 est ajouté progressivement : parties A (grille) et B (joueurs)
+disponibles ; la partie C (jeu complet) sera ajoutée à l'étape suivante.
 
 ## Exécution
 
@@ -121,6 +122,28 @@ python TP2_PartieA.py --test
 
 Le premier lancement affiche le jeu d'essai de l'énoncé ; il ne lance pas
 encore de partie interactive. Les neuf tests sont en bas du code.
+
+## TP2 : morpion, étape 2 — les joueurs
+
+`JoueurHumain` et `JoueurIA` possèdent la même méthode
+`prochain_coup(tab, symbole)`. Passer `grille.tab` comme premier argument.
+La méthode renvoie un tuple (ligne, colonne) sans modifier la grille ;
+le programme appelant applique ensuite le coup avec `grille.jouer()`.
+
+Le joueur humain redemande les coordonnées après une saisie non numérique,
+un coup hors grille ou une case occupée. L'IA tire au hasard parmi les
+cases libres. Sur une grille pleine, les deux lèvent ValueError ;
+la partie C devra donc détecter la fin de partie avant de demander un coup.
+
+Depuis le dossier `TP2` :
+
+```powershell
+python TP2_PartieB.py
+python TP2_PartieB.py --test
+```
+
+Le lancement normal montre un coup humain puis un coup IA, sans boucle
+de partie complète. Les neuf tests sont placés en bas du fichier.
 
 ## Historique des commits
 
