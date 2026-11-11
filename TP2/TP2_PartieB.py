@@ -1,26 +1,17 @@
-"""TP2, partie B : joueur humain et intelligence artificielle aléatoire.
-
-Exemple interactif : python TP2_PartieB.py
-Tests en bas du code : python TP2_PartieB.py --test
-"""
-
 import random
 
 from TP2_PartieA import Grille
 
 
 def cases_libres(tab):
-    """Renvoyer les coordonnées libres d'une grille 3 × 3 (liste de listes)."""
+    #Renvoyer les coordonnées libres d'une grille 3 × 3 (liste de listes).
     return [(x, y) for x in range(3) for y in range(3) if tab[x][y] == " "]
 
 
 class JoueurHumain:
     def prochain_coup(self, tab, symbole):
-        """Demander une ligne et une colonne libres, puis renvoyer (x, y).
-
-        tab est la liste de listes de Grille : appeler avec grille.tab.
-        Cette méthode propose un coup sans modifier la grille.
-        """
+        #Demander une ligne et une colonne libres, puis renvoyer (x, y).
+        
         if not cases_libres(tab):
             raise ValueError("La grille est pleine : aucun coup possible.")
 
@@ -46,9 +37,9 @@ class JoueurHumain:
 
 class JoueurIA:
     def prochain_coup(self, tab, symbole):
-        """Choisir une case libre au hasard, sans modifier la grille.
+        #Choisir une case libre au hasard, sans modifier la grille.
 
-        Le paramètre symbole conserve la même interface que JoueurHumain.
+        """Le paramètre symbole conserve la même interface que JoueurHumain.
         Cette IA aléatoire n'en a pas besoin pour choisir sa case.
         """
         libres = cases_libres(tab)
@@ -58,7 +49,7 @@ class JoueurIA:
 
 
 def demonstration():
-    """Montrer un coup humain puis un coup IA ; la partie C gérera le jeu."""
+    #Montrer un coup humain puis un coup IA ; la partie C gérera le jeu.
     grille = Grille()
     humain = JoueurHumain()
     ia = JoueurIA()
@@ -74,9 +65,8 @@ def demonstration():
     print("Fin de l'exemple : la boucle complète sera ajoutée en partie C.")
 
 
-# ============================================================
 # TESTS AUTOMATISÉS DE LA PARTIE B — en bas du code
-# ============================================================
+
 import io
 import sys
 import unittest
