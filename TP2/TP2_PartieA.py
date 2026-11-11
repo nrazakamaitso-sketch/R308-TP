@@ -1,28 +1,18 @@
-"""TP2, partie A : une grille de morpion de trois lignes et trois colonnes.
-
-Exemple : python TP2_PartieA.py
-Tests : python TP2_PartieA.py --test
-"""
-
-
 class Grille:
     def __init__(self):
         # Chaque ligne est une liste différente ; une case libre vaut " ".
         self.tab = [[" " for colonne in range(3)] for ligne in range(3)]
 
     def afficher(self):
-        """Afficher la grille avec des séparateurs lisibles."""
+        #Afficher la grille avec des séparateurs lisibles.
         for x in range(3):
             print(" " + " | ".join(self.tab[x]))
             if x < 2:
                 print("-----------")
 
     def jouer(self, x, y, joueur):
-        """Placer X ou O ; renvoyer False si le coup est invalide.
-
-        x représente la ligne et y la colonne, de 0 à 2 inclus.
-        Un refus ne modifie jamais la grille.
-        """
+        #Placer X ou O ; renvoyer False si le coup est invalide. x représente la ligne et y la colonne, de 0 à 2 inclus.
+        #Un refus ne modifie jamais la grille.
         # Vérifier les coordonnées avant de lire la case. En Python, -1
         # serait sinon interprété comme la dernière ligne ou colonne.
         if type(x) is not int or type(y) is not int:
@@ -38,7 +28,7 @@ class Grille:
         return True
 
     def est_gagnant(self, j):
-        """Vérifier les trois lignes, trois colonnes et deux diagonales."""
+        #Vérifier les trois lignes, trois colonnes et deux diagonales.
         if j not in ("X", "O"):
             return False
 
@@ -59,7 +49,7 @@ class Grille:
         return False
 
     def est_plein(self):
-        """Renvoyer True lorsqu'il ne reste aucune case libre."""
+        #Renvoyer True lorsqu'il ne reste aucune case libre.
         for ligne in self.tab:
             if " " in ligne:
                 return False
@@ -67,7 +57,7 @@ class Grille:
 
 
 def demonstration():
-    """Reproduire le jeu d'essai de la partie A de l'énoncé."""
+    #Reproduire le jeu d'essai de la partie A de l'énoncé.
     g = Grille()
     g.jouer(0, 0, "X")
     g.jouer(0, 1, "O")
@@ -82,9 +72,7 @@ def demonstration():
     print("X est gagnant :", g.est_gagnant("X"))
 
 
-# ============================================================
 # TESTS AUTOMATISÉS DE LA PARTIE A — en bas du code
-# ============================================================
 import io
 import sys
 import unittest
