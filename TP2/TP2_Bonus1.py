@@ -1,9 +1,3 @@
-"""TP2, bonus 1 : une IA qui gagne si possible, sinon bloque l'adversaire.
-
-Jouer : python TP2_Bonus1.py
-Tests placés en bas du code : python TP2_Bonus1.py --test
-"""
-
 # Réutiliser la grille, les joueurs et la boucle du jeu complet.
 from TP2_PartieA import Grille
 from TP2_PartieB import JoueurHumain, JoueurIA, cases_libres
@@ -11,14 +5,7 @@ from TP2_PartieC import jouer_partie
 
 
 class JoueurIAMalin(JoueurIA):
-    """Étendre l'IA aléatoire avec deux priorités : gagner, puis bloquer.
-
-    Cette stratégie examine le prochain coup seulement. Elle ne garantit
-    donc pas de gagner ou de faire match nul contre tous les adversaires.
-    """
-
     def trouver_coup_gagnant(self, tab, symbole):
-        """Renvoyer une case qui ferait gagner symbole, ou None s'il n'y en a pas."""
         # Tester chaque case libre dans l'ordre des lignes et des colonnes.
         # S'il existe plusieurs victoires possibles, la première est retenue.
         for x, y in cases_libres(tab):
@@ -32,7 +19,6 @@ class JoueurIAMalin(JoueurIA):
         return None
 
     def prochain_coup(self, tab, symbole):
-        """Proposer (x, y) sans jouer réellement, comme les joueurs de la partie B."""
         if symbole not in ("X", "O"):
             raise ValueError("Le symbole doit être X ou O.")
         if not cases_libres(tab):
@@ -57,7 +43,6 @@ class JoueurIAMalin(JoueurIA):
 
 
 def main():
-    """Essayer le bonus avec le moteur de jeu de la partie C."""
     print("=== MORPION — IA QUI GAGNE OU BLOQUE ===")
     while True:
         print("\n1. Humain (X) contre IA maligne (O)")
@@ -81,9 +66,9 @@ def main():
         jouer_partie(joueur_x, joueur_o)
 
 
-# ============================================================
+
 # TESTS AUTOMATISÉS DU BONUS 1 — en bas du code
-# ============================================================
+
 import io
 import random
 import sys
