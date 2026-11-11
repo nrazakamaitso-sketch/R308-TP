@@ -14,6 +14,7 @@ TP2/
     TP2_PartieA.py
     TP2_PartieB.py
     TP2_PartieC.py
+    TP2_Bonus1.py
 TP3/
     TP3_PartieA.py
     TP3_PartieB.py
@@ -168,7 +169,32 @@ sur disque. Chaque nouvelle partie repart sur une grille vide.
 
 Les neuf tests sont en bas du code, dont vingt parties IA contre IA
 reproductibles, la reprise après coups invalides, les victoires et le nul.
-Le bonus de l'IA qui gagne ou bloque sera traité séparément.
+Le bonus de l'IA qui gagne ou bloque est disponible dans TP2_Bonus1.py.
+
+## TP2 : bonus 1 — l'IA qui gagne ou bloque
+
+`TP2/TP2_Bonus1.py` définit `JoueurIAMalin`, qui hérite de `JoueurIA`.
+Sa méthode `prochain_coup(tab, symbole)` applique ces priorités :
+1. jouer un coup gagnant immédiat ;
+2. bloquer une victoire immédiate de l'adversaire ;
+3. choisir une case libre au hasard.
+
+Chaque simulation utilise une copie des lignes de la grille. Proposer un
+coup ne modifie jamais la partie réelle. Cette stratégie à un seul coup
+d'avance ne constitue pas une IA imbattable.
+
+Depuis le dossier `TP2` :
+
+```powershell
+python TP2_Bonus1.py
+python TP2_Bonus1.py --test
+```
+
+Le menu propose humain contre IA maligne, IA aléatoire contre IA maligne,
+ou deux IA malignes. Il réutilise la boucle de jeu de la partie C.
+Les dix tests en bas du fichier couvrent les exemples de l'énoncé,
+les lignes, colonnes et diagonales pour les deux symboles, l'absence de
+modification de la grille et vingt parties contre l'IA aléatoire.
 
 ## Historique des commits
 
