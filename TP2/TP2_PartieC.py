@@ -1,9 +1,3 @@
-"""TP2, partie C : jeu complet de morpion.
-
-Jouer : python TP2_PartieC.py
-Tests en bas du code : python TP2_PartieC.py --test
-"""
-
 # Réutiliser la grille et les joueurs déjà écrits : on ne recopie pas
 # leurs classes ici. Ces deux fichiers doivent rester dans le même dossier.
 from TP2_PartieA import Grille
@@ -11,9 +5,10 @@ from TP2_PartieB import JoueurHumain, JoueurIA
 
 
 def jouer_partie(joueur_x, joueur_o, afficher=True):
-    """Jouer sur une nouvelle grille ; renvoyer X, O, ou None pour un nul."""
+    #Jouer sur une nouvelle grille ; renvoyer X, O, ou None pour un nul.
     # Une nouvelle instance donne neuf cases vides à chaque nouvelle partie.
     grille = Grille()
+    
     # Ce dictionnaire associe chaque symbole à l'objet qui choisit ses coups.
     # Cet objet peut être un humain ou une IA : leur méthode porte le même nom.
     joueurs = {"X": joueur_x, "O": joueur_o}
@@ -36,14 +31,11 @@ def jouer_partie(joueur_x, joueur_o, afficher=True):
             x, y = joueurs[symbole].prochain_coup(grille.tab, symbole)
         except (TypeError, ValueError):
             # Par exemple, None ne peut pas être séparé en deux coordonnées
-            # (TypeError), et un tuple à un seul élément n'en fournit pas assez
-            # (ValueError). Le programme signale le problème puis reprend.
             # Le joueur doit renvoyer deux coordonnées. Une proposition
             # mal formée n'entraîne ni modification ni changement de tour.
             if afficher:
                 print("Coup invalide : le même joueur rejoue.")
             # continue remonte au début de while sans atteindre le changement
-            # de symbole : le même joueur doit donc proposer un autre coup.
             continue
 
         # Même si le joueur humain vérifie déjà ses saisies en partie B,
@@ -78,7 +70,6 @@ def jouer_partie(joueur_x, joueur_o, afficher=True):
 
 
 def main():
-    """Choisir un mode et conserver les scores pendant cette exécution."""
     # Initialiser les compteurs une seule fois, AVANT la boucle du menu.
     # Les recréer dans la boucle remettrait les scores à zéro à chaque partie.
     scores = {"X": 0, "O": 0, "nuls": 0}
@@ -127,10 +118,9 @@ def main():
         # Les scores sont attachés aux symboles, même si le mode change.
 
 
-# ============================================================
+
 # TESTS AUTOMATISÉS DE LA PARTIE C — en bas du code
-# ============================================================
-# Outils de la bibliothèque standard : aucune installation supplémentaire.
+
 import io  # Capturer les messages imprimés dans une chaîne de caractères.
 import random
 import sys  # Lire les options données après le nom du fichier, dont --test.
