@@ -10,6 +10,8 @@ TP1/
     TP1_PartieC.py
     TP1_PartieD.py
     mots.txt
+TP2/
+    TP2_PartieA.py
 TP3/
     TP3_PartieA.py
     TP3_PartieB.py
@@ -18,8 +20,8 @@ TP3/
     TP3_PartieE.py
 ```
 
-Le TP2 n'est pas inclus : aucun fichier correspondant n'était présent dans
-le dossier source R308.
+Le TP2 est ajouté progressivement : partie A (grille) disponible ;
+les parties B (joueurs) et C (jeu complet) seront ajoutées aux étapes suivantes.
 
 ## Exécution
 
@@ -99,6 +101,26 @@ Les onze tests sont en bas de `TP3_PartieE.py` :
 ```powershell
 python TP3_PartieE.py --test
 ```
+
+## TP2 : morpion, étape 1 — la grille
+
+La classe `Grille` de `TP2/TP2_PartieA.py` utilise une liste de trois listes.
+Les coordonnées commencent à 0 : `x` est la ligne, `y` la colonne.
+`jouer(x, y, joueur)` renvoie True si X ou O est placé dans une case libre,
+False pour un coup invalide, sans modifier la grille. `est_gagnant(j)`
+vérifie lignes, colonnes et diagonales. `est_plein()` indique si la grille
+ne contient plus de case libre.
+
+Depuis la racine du dépôt :
+
+```powershell
+cd TP2
+python TP2_PartieA.py
+python TP2_PartieA.py --test
+```
+
+Le premier lancement affiche le jeu d'essai de l'énoncé ; il ne lance pas
+encore de partie interactive. Les neuf tests sont en bas du code.
 
 ## Historique des commits
 
