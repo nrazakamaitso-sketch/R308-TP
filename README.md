@@ -13,6 +13,7 @@ TP1/
 TP2/
     TP2_PartieA.py
     TP2_PartieB.py
+    TP2_PartieC.py
 TP3/
     TP3_PartieA.py
     TP3_PartieB.py
@@ -21,8 +22,8 @@ TP3/
     TP3_PartieE.py
 ```
 
-Le TP2 est ajouté progressivement : parties A (grille) et B (joueurs)
-disponibles ; la partie C (jeu complet) sera ajoutée à l'étape suivante.
+Les trois parties du TP2 sont disponibles : A (grille), B (joueurs)
+et C (jeu complet).
 
 ## Exécution
 
@@ -133,7 +134,7 @@ le programme appelant applique ensuite le coup avec `grille.jouer()`.
 Le joueur humain redemande les coordonnées après une saisie non numérique,
 un coup hors grille ou une case occupée. L'IA tire au hasard parmi les
 cases libres. Sur une grille pleine, les deux lèvent ValueError ;
-la partie C devra donc détecter la fin de partie avant de demander un coup.
+la partie C détecte donc la fin de partie avant de demander un coup.
 
 Depuis le dossier `TP2` :
 
@@ -144,6 +145,30 @@ python TP2_PartieB.py --test
 
 Le lancement normal montre un coup humain puis un coup IA, sans boucle
 de partie complète. Les neuf tests sont placés en bas du fichier.
+
+## TP2 : morpion, étape 3 — le jeu complet
+
+Depuis le dossier `TP2` :
+
+```powershell
+python TP2_PartieC.py
+python TP2_PartieC.py --test
+```
+
+Le menu propose humain contre IA, deux humains et IA contre IA ; 0 quitte.
+X commence et les coordonnées vont de 0 à 2 (ligne puis colonne).
+La fonction `jouer_partie(joueur_x, joueur_o)` crée une grille vide, alterne
+les joueurs après un coup valide et renvoie "X", "O", ou None pour un nul.
+Un coup invalide fait rejouer le même joueur. Une victoire sur la neuvième
+case est reconnue avant le test de match nul.
+
+Les scores de X, O et des matchs nuls sont conservés entre les parties
+pendant cette exécution, même si le mode change. Ils ne sont pas sauvegardés
+sur disque. Chaque nouvelle partie repart sur une grille vide.
+
+Les neuf tests sont en bas du code, dont vingt parties IA contre IA
+reproductibles, la reprise après coups invalides, les victoires et le nul.
+Le bonus de l'IA qui gagne ou bloque sera traité séparément.
 
 ## Historique des commits
 
